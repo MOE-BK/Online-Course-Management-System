@@ -1,0 +1,194 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - OnlineCoursePlatform</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+          href="~/css/bootstrap (1).css/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <!-- Application CSS -->
+    <link rel="stylesheet"
+          href="~/Online_Course_Management_System.styles.css"
+          asp-append-version="true" />
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+
+            <div class="container-fluid">
+
+                <!-- Brand -->
+                <a class="navbar-brand"
+                   asp-controller="Home"
+                   asp-action="Index">
+                    Online_Course_Management_System
+                </a>
+
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+
+                    <span class="navbar-toggler-icon"></span>
+
+                </button>
+
+                <!-- Navigation Links -->
+                <div class="collapse navbar-collapse"
+                     id="mainNavbar">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Home
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Home"
+                               asp-action="Privacy">
+                                Privacy
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Courses"
+                               asp-action="Index">
+                                Courses
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Categories"
+                               asp-action="Index">
+                                Categories
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link"
+                               asp-controller="Instructors"
+                               asp-action="Index">
+                                Instructors
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <!-- Authentication Links -->
+                    <ul class="navbar-nav">
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link">
+                                    Welcome, @User.Identity.Name
+                                </span>
+                            </li>
+
+                            <li class="nav-item">
+                                <form asp-controller="Auth"
+                                      asp-action="Logout"
+                                      method="post"
+                                      class="d-inline">
+
+                                    @Html.AntiForgeryToken()
+
+                                    <button type="submit"
+                                            class="btn btn-link nav-link">
+                                        Logout
+                                    </button>
+
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Auth"
+                                   asp-action="Login">
+                                    Login
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Auth"
+                                   asp-action="Register">
+                                    Register
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+
+        <main role="main" class="pb-3">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-top footer text-muted">
+
+        <div class="container">
+
+            &copy; 2026 - Online_Course_Management_System -
+
+            <a asp-controller="Home"
+               asp-action="Privacy">
+                Privacy
+            </a>
+
+        </div>
+
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

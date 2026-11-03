@@ -1,0 +1,40 @@
+﻿@model Online_Course_Management_System.Models.Course
+
+<div class="course-card">
+
+    <h2>@Model.Name</h2>
+
+    <p>@Model.Description</p>
+
+    <p>Price: @Model.Price</p>
+
+    <p>Duration: @Model.Duration hours</p>
+
+    <p>Category: @Model.Category.Name</p>
+
+    <p>Instructor: @Model.Instructor.Name</p>
+
+    <a asp-controller="Courses"
+       asp-action="Details"
+       asp-route-id="@Model.Id">
+        Details
+    </a>
+
+    <a asp-controller="Courses"
+       asp-action="Edit"
+       asp-route-id="@Model.Id">
+        Edit
+    </a>
+
+    <a asp-controller="Courses"
+       asp-action="Delete"
+       asp-route-id="@Model.Id">
+        Delete
+    </a>
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath"
+             alt="@Model.Name"
+             width="200" />
+    }
+</div>

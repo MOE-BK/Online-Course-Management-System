@@ -1,0 +1,31 @@
+﻿
+@model Online_Course_Management_System.Models.Instructor
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Instructor Details</h1>
+
+<div class="card p-3">
+
+    <p>
+        <strong>Id:</strong> @Model.Id
+    </p>
+
+    <p>
+        <strong>Name:</strong> @Model.Name
+    </p>
+
+    <p>
+        <strong>Email:</strong> @Model.Email
+    </p>
+
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id"
+   class="btn btn-warning">Edit</a>
+
+<a asp-action="Index" class="btn btn-secondary">
+    Back to Instructors
+</a>

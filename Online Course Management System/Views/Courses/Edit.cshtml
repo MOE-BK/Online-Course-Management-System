@@ -1,0 +1,52 @@
+﻿
+@model Online_Course_Management_System.ViewModel.CourseEditViewModel
+
+<h1>Edit Course</h1>
+
+<form asp-action="Edit" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div>
+        <label asp-for="Duration"></label>
+        <input asp-for="Duration" />
+        <span asp-validation-for="Duration"></span>
+    </div>
+
+    <div>
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" asp-items="ViewBag.Categories">
+            <option value="">-- Select Category --</option>
+        </select>
+        <span asp-validation-for="CategoryId"></span>
+    </div>
+
+    <div>
+        <label asp-for="InstructorId"></label>
+        <select asp-for="InstructorId" asp-items="ViewBag.Instructors">
+            <option value="">-- Select Instructor --</option>
+        </select>
+        <span asp-validation-for="InstructorId"></span>
+    </div>
+
+    <button type="submit">Save Changes</button>
+
+</form>
+
+<a asp-action="Index">Back to Courses</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

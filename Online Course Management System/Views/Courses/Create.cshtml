@@ -1,0 +1,62 @@
+﻿@model Online_Course_Management_System.ViewModel.CourseCreateViewModel
+
+<h1>Create Course </h1>
+<form asp-action="Create" method="post"
+    enctype="multipart/form-data">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description"></textarea>
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div>
+        <label asp-for="Price"></label>
+        <input asp-for="Price" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div>
+        <label asp-for="Duration"></label>
+        <input asp-for="Duration" />
+        <span asp-validation-for="Duration"></span>
+    </div>
+
+    <button type="submit">Create</button>
+    <div>
+        <label asp-for="CategoryId"></label>
+
+        <select asp-for="CategoryId"
+                asp-items="ViewBag.Categories">
+            <option value="">-- Select Category --</option>
+        </select>
+
+        <span asp-validation-for="CategoryId"></span>
+    </div>
+
+    <div>
+        <label asp-for="InstructorId"></label>
+
+        <select asp-for="InstructorId"
+                asp-items="ViewBag.Instructors">
+            <option value="">-- Select Instructor --</option>
+        </select>
+
+        <span asp-validation-for="InstructorId"></span>
+    </div>
+    <div>
+        <label asp-for="Image"></label>
+
+        <input asp-for="Image"
+               type="file" />
+
+        <span asp-validation-for="Image"></span>
+    </div>
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</form>

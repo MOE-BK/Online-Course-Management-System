@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<Online_Course_Management_System.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Instructors";
+}
+
+<h2>Instructors</h2>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Add New Instructor
+</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var instructor in Model)
+        {
+            <tr>
+                <td>@instructor.Id</td>
+                <td>@instructor.Name</td>
+                <td>@instructor.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@instructor.Id">Details</a> |
+                    <a asp-action="Edit" asp-route-id="@instructor.Id">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@instructor.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

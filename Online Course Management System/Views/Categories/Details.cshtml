@@ -1,0 +1,25 @@
+﻿
+@model Online_Course_Management_System.Models.Category
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Category Details</h1>
+
+<div class="card p-3">
+
+    <h3>@Model.Name</h3>
+
+    <p>
+        <strong>Category ID:</strong> @Model.Id
+    </p>
+
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id"
+   class="btn btn-warning">Edit</a>
+
+<a asp-action="Index" class="btn btn-secondary">
+    Back to Categories
+</a>

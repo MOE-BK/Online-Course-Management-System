@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Online_Course_Management_System.Models.Course>
+
+<h1>Courses</h1>
+
+<a asp-action="Create">Create New Course</a>
+
+<hr />
+
+<form asp-action="Index" method="get">
+
+    <div>
+        <label>Search</label>
+
+        <input type="text"
+               name="search"
+               value="@ViewBag.Search"
+               placeholder="Search courses..." />
+    </div>
+
+    <div>
+        <label>Category</label>
+
+        <select name="categoryId">
+            <option value="">All Categories</option>
+
+            @foreach (var category in ViewBag.Categories)
+            {
+                <option value="@category.Value"
+                        selected="@(category.Value == ViewBag.CategoryId?.ToString())">
+                    @category.Text
+                </option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label>Sort</label>
+
+        <select name="sort">
+            <option value="">Name A-Z</option>
+            <option value="name_desc">Name Z-A</option>
+            <option value="price_asc">Price Low-High</option>
+            <option value="price_desc">Price High-Low</option>
+        </select>
+    </div>
+
+    <div>
+        <label>Page Size</label>
+
+        <select name="pageSize">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
+    </div>
+
+    <button type="submit">Search</button>
+
+</form>
+
+<hr />
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div>
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@foreach (var course in Model)
+{
+    <partial name="_CourseCard" model="course" />
+}
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div>
+
+        @for (int i = 1; i <= ViewBag.TotalPages; i++)
+        {
+            <a asp-action="Index"
+               asp-route-page="@i"
+               asp-route-search="@ViewBag.Search"
+               asp-route-categoryId="@ViewBag.CategoryId"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-pageSize="@ViewBag.PageSize">
+
+                @i
+            </a>
+        }
+
+    </div>
+}

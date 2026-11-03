@@ -1,0 +1,7 @@
+﻿<h2>My Profile</h2>
+
+<p>Welcome, @User.Identity?.Name</p>
+
+<p>User ID: @User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value</p>
+
+<p>Email: @User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value</p>

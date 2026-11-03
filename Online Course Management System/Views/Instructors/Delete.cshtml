@@ -1,0 +1,36 @@
+﻿
+@model Online_Course_Management_System.Models.Instructor
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete Instructor</h1>
+
+<div class="alert alert-warning">
+    Are you sure you want to delete this instructor?
+</div>
+
+<div class="card p-3 mb-3">
+
+    <p><strong>Id:</strong> @Model.Id</p>
+
+    <p><strong>Name:</strong> @Model.Name</p>
+
+    <p><strong>Email:</strong> @Model.Email</p>
+
+</div>
+
+<form asp-action="Delete" asp-route-id="@Model.Id" method="post">
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-danger">
+        Confirm Delete
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Cancel
+    </a>
+
+</form>
